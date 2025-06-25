@@ -73,6 +73,7 @@ import { errorHandler } from "./middlewares/errorHandler.middleware.js";
 import { HTTPSTATUS } from "./config/http.config.js";
 import asyncHandler from "./utils/asyncHandler.js";
 import { BadRequestException } from "./utils/ApiError.js";
+import cookieParser from "cookie-parser";
 import "./config/passport.config.js";
 import passport from "passport";
 import authRoutes from "./routes/auth.routes.js";
@@ -90,6 +91,7 @@ const BASE_PATH = config.BASE_PATH;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(cookieParser());
 
 console.log(`config:${config.FRONTEND_ORIGIN}`);
 // Configure CORS before session (important for credentials)
