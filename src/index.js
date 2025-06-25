@@ -91,7 +91,6 @@ const BASE_PATH = config.BASE_PATH;
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-
 // Configure CORS before session (important for credentials)
 app.use(
   cors({
@@ -123,14 +122,6 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
-// app.get(
-//   "/",
-//   asyncHandler((req, res, next) => {
-//     throw new BadRequestException("this is a bad request");
-//     res.status(HTTPSTATUS.OK).send("Hi");
-//   })
-// );
-
 app.use(`${BASE_PATH}/auth`, authRoutes);
 app.use(`${BASE_PATH}/user`, isAuthenticated, userRoutes);
 app.use(`${BASE_PATH}/workspace`, isAuthenticated, workSpaceRoutes);
@@ -138,6 +129,13 @@ app.use(`${BASE_PATH}/member`, isAuthenticated, memberRoutes);
 app.use(`${BASE_PATH}/project`, isAuthenticated, projectRoutes);
 app.use(`${BASE_PATH}/task`, isAuthenticated, taskRoutes);
 
+app.get(
+  "/",
+  asyncHandler((req, res, next) => {
+    throw new BadRequestException("this is a bad request");
+    res.status(HTTPSTATUS.OK).send("Hi");
+  })
+);
 app.use(errorHandler);
 
 app.listen(config.PORT, async () => {
