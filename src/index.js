@@ -91,10 +91,11 @@ const BASE_PATH = config.BASE_PATH;
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+console.log(`config:${config.FRONTEND_ORIGIN}`);
 // Configure CORS before session (important for credentials)
 app.use(
   cors({
-    origin: config.FRONTEND_ORIGIN,
+    origin: "*",
     credentials: true,
   })
 );
