@@ -91,6 +91,15 @@ const BASE_PATH = config.BASE_PATH;
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+//The browser sends a preflight (HTTP OPTIONS) request only if the actual request is considered non-simple.
+app.options(
+  "*",
+  cors({
+    origin: config.FRONTEND_ORIGIN,
+    credentials: true,
+  })
+);
+
 // Configure CORS before session (important for credentials)
 app.use(
   cors({
