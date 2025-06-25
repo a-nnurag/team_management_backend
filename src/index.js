@@ -123,13 +123,13 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.get(
-  "/",
-  asyncHandler((req, res, next) => {
-    throw new BadRequestException("this is a bad request");
-    res.status(HTTPSTATUS.OK).send("Hi");
-  })
-);
+// app.get(
+//   "/",
+//   asyncHandler((req, res, next) => {
+//     throw new BadRequestException("this is a bad request");
+//     res.status(HTTPSTATUS.OK).send("Hi");
+//   })
+// );
 
 app.use(`${BASE_PATH}/auth`, authRoutes);
 app.use(`${BASE_PATH}/user`, isAuthenticated, userRoutes);
