@@ -68,7 +68,7 @@ passport.use(
     },
     async (email, password, done) => {
       try {
-        const user = await verifyUserService( email, password );
+        const user = await verifyUserService(email, password);
         return done(null, user);
       } catch (error) {
         return done(error, false, { message: error?.message });
@@ -82,3 +82,5 @@ passport.use(
 
 passport.serializeUser((user, done) => done(null, user));
 passport.deserializeUser((user, done) => done(null, user));
+
+export default passport;
