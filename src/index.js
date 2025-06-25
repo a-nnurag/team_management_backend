@@ -95,7 +95,7 @@ console.log(`config:${config.FRONTEND_ORIGIN}`);
 // Configure CORS before session (important for credentials)
 app.use(
   cors({
-    origin: "*",
+    origin: config.FRONTEND_ORIGIN,
     credentials: true,
   })
 );
@@ -130,14 +130,14 @@ app.use(`${BASE_PATH}/member`, isAuthenticated, memberRoutes);
 app.use(`${BASE_PATH}/project`, isAuthenticated, projectRoutes);
 app.use(`${BASE_PATH}/task`, isAuthenticated, taskRoutes);
 
-app.get(
-  "/",
-  asyncHandler((req, res, next) => {
-    throw new BadRequestException("this is a bad request");
-    res.status(HTTPSTATUS.OK).send("Hi");
-  })
-);
-app.use(errorHandler);
+// app.get(
+//   "/",
+//   asyncHandler((req, res, next) => {
+//     throw new BadRequestException("this is a bad request");
+//     res.status(HTTPSTATUS.OK).send("Hi");
+//   })
+// );
+// app.use(errorHandler);
 
 app.listen(config.PORT, async () => {
   console.log(

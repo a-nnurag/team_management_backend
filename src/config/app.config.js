@@ -16,10 +16,10 @@ const appConfig = () => ({
   GOOGLE_CLIENT_SECRET: process.env.GOOGLE_CLIENT_SECRET,
   GOOGLE_CALLBACK_URL: process.env.GOOGLE_CALLBACK_URL,
 
-  FRONTEND_ORIGIN: process.env.FRONTEND_ORIGIN ,
+  FRONTEND_ORIGIN: process.env.FRONTEND_ORIGIN,
   FRONTEND_GOOGLE_CALLBACK_URL: process.env.FRONTEND_GOOGLE_CALLBACK_URL,
 });
 
 const config = appConfig();
 
-export default  config ;
+export default config;
